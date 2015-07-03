@@ -1,0 +1,77 @@
+package net.amicom;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class AdvancedServlet
+ */
+
+/* 초기화변수를 설정하는 다른 방법 
+@WebServlet(initParams={@WebInitParam(name="id",value="kasdf"), @WebInitParam(name="pw",value="asdf") })
+*/
+
+
+public class AdvancedServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AdvancedServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		//context변수 초기화하고 가져오기 web.xml에 기
+		String a = getServletContext().getInitParameter("a");
+		String b = getServletContext().getInitParameter("b");
+		
+		
+		String id = getInitParameter("id");
+		String name = getInitParameter("name");
+		String pw = getInitParameter("pw");
+
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		writer.println(id);
+		writer.println(name);
+		writer.println(pw);
+		writer.println(a);
+		writer.println(b);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

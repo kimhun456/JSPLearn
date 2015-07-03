@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="HelloWorld" method="Post">
+		<input type="text" name="name" value="post" /> <input type="submit"
+			value="send" /> <input type="reset" value="reset" />
+	</form>
+
+	<form action="LifeCycle" method="Post">
+		<input type="submit" name="send" />
+	</form>
+</body>
+</html>
