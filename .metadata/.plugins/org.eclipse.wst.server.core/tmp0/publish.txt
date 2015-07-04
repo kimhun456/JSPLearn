@@ -1,5 +1,5 @@
 #Tomcat publish data
-#Wed Jul 01 22:21:36 KST 2015
+#Sat Jul 04 15:19:15 KST 2015
 org.eclipse.jst.jee.server\:ActionTag=/Users/HyunJae/Tools/apache-tomcat-8.0.23/wtpwebapps/ActionTag
 org.eclipse.jst.jee.server\:HelloWorld=/Users/HyunJae/Tools/apache-tomcat-8.0.23/wtpwebapps/HelloWorld
 org.eclipse.jst.jee.server\:Join=/Users/HyunJae/Tools/apache-tomcat-8.0.23/wtpwebapps/Join

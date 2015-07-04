@@ -1,0 +1,97 @@
+package net.amicom;
+
+import java.io.IOException;
+import java.sql.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+/**
+ * Servlet implementation class JoinOk
+ */
+@WebServlet("/JoinOk")
+public class JoinOk extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	String name,id,pw,phone1,phone2,phone3,gender;
+	
+	Connection connection;
+	Statement statement;
+	ResultSet resultSet;
+	String driver = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost/jsp"; // 사용하려는 데이터베이스명을 포함한 URL 기술
+	
+	
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public JoinOk() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		actionDo(request,response);
+	}
+	
+	
+	private void actionDo(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+			request.setCharacterEncoding("UTF-8");
+			name = request.getParameter("name");
+			id = request.getParameter("id");
+			pw = request.getParameter("pw");
+			phone1 = request.getParameter("phone1");
+			phone2 = request.getParameter("phone2");
+			phone3 = request.getParameter("phone3");
+			gender = request.getParameter("gender");
+			
+			String query = "insert into member values('" + name + "', '"+ id+ "', '"+ pw+ "', '"+ phone1+ "', '"+ phone2+ "', '"+ phone3+ "', '"+ gender+ "') ";
+			
+			System.out.println(query);
+			
+			
+			try {
+				Class.forName(driver);
+				connection = DriverManager.getConnection(url,"root","vhrlgnghl456");
+				statement = connection.createStatement();
+				int i = statement.executeUpdate(query);
+				
+				if(i==1){
+					System.out.println("insertSuccess");
+					response.sendRedirect("join_result.jsp");
+				}else{
+					System.out.println("insert FAIL");
+					response.sendRedirect("join.html");
+				}
+				
+				
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+	}
+	
+
+}
